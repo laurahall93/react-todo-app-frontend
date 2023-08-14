@@ -16,7 +16,7 @@ body {
   }
 }
 
-.todolist {
+.todo-list {
   margin: 4rem auto;
   padding: 2rem 3rem 3rem;
   max-width: 500px;
@@ -24,7 +24,7 @@ body {
   color: #fff;
   box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
 }
-.todolist,
+.todo-list,
 h1 {
   /*text-align:center;*/
   font-weight: normal;
@@ -32,7 +32,7 @@ h1 {
   letter-spacing: 0.05em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.todolist h1 span {
+.todo-list h1 span {
   display: block;
   font-size: 0.8rem;
   margin-bottom: 0.7rem;
@@ -40,21 +40,21 @@ h1 {
   margin-top: 0.2rem;
 }
 
-.todolist .emptylist {
+.todo-list .emptylist {
   margin-top: 2.6rem;
   text-align: center;
   letter-spacing: 0.05em;
   font-style: italic;
   opacity: 0.8;
 }
-.todolist ul {
+.todo-list ul {
   margin-top: 2.6rem;
   list-style: none;
 }
-.todolist .todolist-move {
+.todo-list .todolist-move {
   transition: transform 1s;
 }
-.todolist li {
+.todo-list li {
   display: flex;
   margin: 0 -3rem 4px;
   padding: 1.1rem 3rem;
@@ -63,18 +63,36 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.todolist .actions {
+.single-todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  padding: 10px;
+}
+.all-todos {
+  margin-top: 20px;
+}
+
+.todo-list .actions {
   flex-shrink: 0;
   padding-left: 0.7em;
 }
-.todolist .label {
+.todo-list .label {
   position: relative;
   transition: opacity 0.2s linear;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 28px;
+  border-radius: 50%;
 }
-.todolist .done .label {
+
+.todo-list .done .label {
   opacity: 0.6;
 }
-.todolist .done .label:before {
+.todo-list .done .label:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -85,11 +103,10 @@ h1 {
   background: #fff;
   animation: strikeitem 0.3s ease-out 0s forwards;
 }
-.todolist .btn-picto {
+.todo-list .btn-picto {
   border: none;
   background: none;
   -webkit-appearance: none;
-  cursor: pointer;
   color: #fff;
 }
 
@@ -180,4 +197,29 @@ form button {
 .togglebutton-wrapper.togglebutton-checked .tooglebutton-box:before {
   left: calc(100% - 4px - 16px);
   opacity: 1;
+}
+
+.button-complete,
+.button-edit,
+.button-delete {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.button-complete {
+  color: #ff6c6c;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.button-edit {
+  color: #e2d029;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.button-delete {
+  color: lightslategray;
+  cursor: pointer;
 }
