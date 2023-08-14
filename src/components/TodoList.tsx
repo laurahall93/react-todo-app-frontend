@@ -1,6 +1,7 @@
 import { TodoItem } from "../App";
 import "font-awesome/css/font-awesome.min.css";
-import { updateTodoById, deleteById } from "../todoClient";
+import { deleteById } from "../todoClient";
+// import {updateTodoById} from "../todoClient"
 
 interface TodoListProps {
   todos: TodoItem[];
