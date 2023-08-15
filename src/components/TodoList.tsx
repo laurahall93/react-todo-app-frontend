@@ -1,18 +1,19 @@
 import { TodoItem } from "../App";
 import "font-awesome/css/font-awesome.min.css";
-import { deleteById } from "../todoClient";
-// import {updateTodoById} from "../todoClient"
+import { deleteById, updateTodoById } from "../todoClient";
 
 interface TodoListProps {
   todos: TodoItem[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   setEditTodo: React.Dispatch<React.SetStateAction<TodoItem | null>>;
+  setCompleteTodo: React.Dispatch<React.SetStateAction<TodoItem | null>>;
 }
 
 export function TodoList({
   todos,
   setTodos,
   setEditTodo,
+  setCompleteTodo,
 }: TodoListProps): JSX.Element {
   const handleDeleteById = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -28,10 +29,29 @@ export function TodoList({
     }
   };
 
+  const markCompleteTodo = (id: string) => {
+    const newTodo = todos.map((todo) => {
+      if (todo.id === id) {
+        return { id: todo.id, title: todo.title, completed: !todo.completed };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(newTodo);
+    setCompleteTodo(null);
+
+    const findTodo = newTodo.find((todo) => {
+      return todo.id === id;
+    });
+    if (findTodo) {
+      updateTodoById(parseInt(findTodo.id), findTodo.title, findTodo.completed);
+    }
+  };
+
   const listTodos = todos.map((todo) => (
     <div
       key={todo.id}
-      className="single-todo"
+      className={`single-todo ${todo.completed ? "completed" : ""}`}
       onChange={(event) => {
         event.preventDefault();
       }}
@@ -42,7 +62,10 @@ export function TodoList({
         </div>
       </div>
       <div className="btn-picto">
-        <button className="button-complete ">
+        <button
+          className="button-complete "
+          onClick={() => markCompleteTodo(todo.id)}
+        >
           <i className="fa fa-check-circle"></i>
         </button>
         <button

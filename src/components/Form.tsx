@@ -44,7 +44,12 @@ export function Form({
     setTodos(newTodo);
     setEditTodo(null);
 
-    updateTodoById(parseInt(id), input);
+    const findTodo = newTodo.find((todo) => {
+      return todo.id === id;
+    });
+    if (findTodo) {
+      updateTodoById(parseInt(findTodo.id), findTodo.title, findTodo.completed);
+    }
   };
 
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {

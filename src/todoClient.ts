@@ -6,7 +6,7 @@ export const getTodos = async () => {
   return jsonBody;
 };
 
-export const addTodo = async (task: string) => {
+export const addTodo = async (title: string) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -14,7 +14,8 @@ export const addTodo = async (task: string) => {
     method: "POST",
     headers: myHeaders,
     body: JSON.stringify({
-      title: task,
+      title: title,
+      completed: false,
     }),
     redirect: "follow",
   };
@@ -36,7 +37,11 @@ export const deleteById = async (id: number) => {
   return response;
 };
 
-export const updateTodoById = async (id: number, task: string) => {
+export const updateTodoById = async (
+  id: number,
+  title: string,
+  completed: boolean
+) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -44,7 +49,8 @@ export const updateTodoById = async (id: number, task: string) => {
     method: "PATCH",
     headers: myHeaders,
     body: JSON.stringify({
-      title: task,
+      title: title,
+      completed: completed,
     }),
     redirect: "follow",
   };
