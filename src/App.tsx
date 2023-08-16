@@ -15,7 +15,6 @@ function App(): JSX.Element {
   const [input, setInput] = useState<string>("");
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [editTodo, setEditTodo] = useState<TodoItem | null>(null);
-  const [completeTodo, setCompleteTodo] = useState<TodoItem | null>(null);
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -47,7 +46,6 @@ function App(): JSX.Element {
               todos={todos}
               setTodos={setTodos}
               setEditTodo={setEditTodo}
-              setCompleteTodo={setCompleteTodo}
             />
           </div>
         </div>

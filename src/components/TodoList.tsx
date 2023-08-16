@@ -6,14 +6,12 @@ interface TodoListProps {
   todos: TodoItem[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   setEditTodo: React.Dispatch<React.SetStateAction<TodoItem | null>>;
-  setCompleteTodo: React.Dispatch<React.SetStateAction<TodoItem | null>>;
 }
 
 export function TodoList({
   todos,
   setTodos,
   setEditTodo,
-  setCompleteTodo,
 }: TodoListProps): JSX.Element {
   const handleDeleteById = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -38,7 +36,6 @@ export function TodoList({
       }
     });
     setTodos(newTodo);
-    setCompleteTodo(null);
 
     const findTodo = newTodo.find((todo) => {
       return todo.id === id;
