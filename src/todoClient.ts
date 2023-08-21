@@ -1,7 +1,7 @@
 import { TodoItem } from "./App";
 
 export const getTodos = async () => {
-  const response = await fetch("http://localhost:4000/items");
+  const response = await fetch("https://todo-backend-3sor.onrender.com/items");
   const jsonBody: TodoItem[] = await response.json();
   return jsonBody;
 };
@@ -20,7 +20,10 @@ export const addTodo = async (title: string) => {
     redirect: "follow",
   };
 
-  const response = await fetch("http://localhost:4000/items", requestOptions);
+  const response = await fetch(
+    "https://todo-backend-3sor.onrender.com/items",
+    requestOptions
+  );
   return response;
 };
 
@@ -31,7 +34,7 @@ export const deleteById = async (id: number) => {
   };
 
   const response = await fetch(
-    "http://localhost:4000/items/" + id,
+    "https://todo-backend-3sor.onrender.com/items/" + id,
     requestOptions
   );
   return response;
@@ -56,7 +59,7 @@ export const updateTodoById = async (
   };
 
   const response = await fetch(
-    "http://localhost:4000/items/" + id,
+    "https://todo-backend-3sor.onrender.com/items/" + id,
     requestOptions
   );
   return response;
