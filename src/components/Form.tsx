@@ -74,7 +74,7 @@ export function Form({
         onChange={handleInputChange}
       />
       <button className="form-button" type="submit">
-        Add
+        {editTodo != null ? "OK" : "Add"}
       </button>
     </form>
   );
